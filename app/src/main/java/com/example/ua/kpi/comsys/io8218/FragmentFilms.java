@@ -32,15 +32,11 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 public class FragmentFilms extends Fragment {
 
-    //json link
-    //private static String jsonURL = "https://run.mocky.io/v3/278f74b0-de01-4ef0-9421-065e1efcf00d";
-
     private FloatingActionButton addFilmButton;
     View v;
     protected static RecyclerViewAdapter recyclerAdapter;
     private RecyclerView myRecycleView;
     protected static List<Film> listFilm;
-    //private AssetManager assetManager;
     private Film deletedFilm = null;
 
     @Nullable
@@ -54,8 +50,6 @@ public class FragmentFilms extends Fragment {
         recyclerAdapter = new RecyclerViewAdapter(getContext(), listFilm);
         myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecycleView.setAdapter(recyclerAdapter);
-//        GetData getData = new GetData();
-//        getData.execute();
 
         addFilmButton = v.findViewById(R.id.addFilmButton);
         addFilmButton.setOnClickListener(new View.OnClickListener() {
@@ -241,77 +235,4 @@ public class FragmentFilms extends Fragment {
                 "7.8", "The daughter of an Imperial scientist joins the Rebel Alliance in a " +
                 "risky move to steal the plans for the Death Star.", "movie", R.drawable.poster_10));
     }
-
-    // PARSE JSON FROM WEBSITE
-//    public class GetData extends AsyncTask<String, String, String> {
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            String current = "";
-//
-//            try {
-//                URL url;
-//                HttpURLConnection urlConnection = null;
-//
-//                try {
-//                    url = new URL(jsonURL);
-//                    urlConnection = (HttpURLConnection) url.openConnection();
-//
-//                    InputStream inputStream = urlConnection.getInputStream();
-//                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-//
-//                    int data = inputStreamReader.read();
-//
-//                    while (data != -1) {
-//                        current += (char) data;
-//                        data = inputStreamReader.read();
-//                    }
-//                    return current;
-//
-//                } catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    if (urlConnection != null) {
-//                        urlConnection.disconnect();
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return current;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            try {
-//                JSONObject jsonObject = new JSONObject(s);
-//                JSONArray jsonArray = jsonObject.getJSONArray("Films");
-//
-//                for (int i = 0; i < jsonArray.length(); i++){
-//                    JSONObject object = jsonArray.getJSONObject(i);
-//
-//                    Film film = new Film();
-//                    film.setFilmName(object.getString("Title"));
-//                    film.setFilmYear(object.getString("Year"));
-//                    film.setFilmType(object.getString("Type"));
-//                    film.setFilmPoster(object.getString("Poster"));
-//
-//                    listFilm.add(film);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//            PutDataIntoRecyclerView(listFilm);
-//        }
-//    }
-
-//    private void PutDataIntoRecyclerView(List<Film> listFilm) {
-//        recyclerAdapter = new RecyclerViewAdapter(getContext(), listFilm);
-//        myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//
-//        myRecycleView.setAdapter(recyclerAdapter);
-//    }
 }
